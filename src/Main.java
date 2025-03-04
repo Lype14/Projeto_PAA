@@ -14,5 +14,7 @@ public class Main {
         grafo.adicionarAresta(1.0, 1, 3);
         grafo.adicionarAresta(2.0, 5, 2);
         grafo.adicionarAresta(3.0, 5, 1);
+
+        grafo.buscaEmLargura();
     }
 }
