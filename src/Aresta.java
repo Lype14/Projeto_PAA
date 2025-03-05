@@ -1,20 +1,39 @@
 public class Aresta<TIPO> {
-    private Double peso;
+    private Double capacidade;
+    private Double fluxo;
     private Vertice<TIPO> inicio;
     private Vertice<TIPO> fim;
+    String tipo; // direta ou contraria
 
-    public Aresta(Double peso, Vertice<TIPO> inicio, Vertice<TIPO> fim) {
-        this.peso = peso;
+    public Aresta(Double capacidade, Double fluxo, Vertice<TIPO> inicio, Vertice<TIPO> fim) {
+        this.capacidade = capacidade;
         this.inicio = inicio;
         this.fim = fim;
+        this.fluxo = fluxo;
     }
 
-    public Double getPeso() {
-        return peso;
+    public Double getCapacidade() {
+        return capacidade;
     }
 
-    public void setPeso(Double peso) {
-        this.peso = peso;
+    public void setCapacidade(Double capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public Double getFluxo() {
+        return fluxo;
+    }
+
+    public void setFluxo(Double fluxo) {
+        this.fluxo = fluxo;
+    }
+
+    public String getTipo(){
+        return this.tipo;
+    }
+
+    public void setTipo(String tipo){
+        this.tipo = tipo;
     }
 
     public Vertice<TIPO> getInicio() {

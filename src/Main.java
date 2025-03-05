@@ -8,13 +8,13 @@ public class Main {
         grafo.adicionarVertice(5);
        
 
-        grafo.adicionarAresta(2.0, 1, 2);
-        grafo.adicionarAresta(3.0, 2, 4);
-        grafo.adicionarAresta(1.0, 4, 3);
-        grafo.adicionarAresta(1.0, 1, 3);
-        grafo.adicionarAresta(2.0, 5, 2);
-        grafo.adicionarAresta(3.0, 5, 1);
+        grafo.adicionarAresta(2.0,0.0, 1, 2);
+        grafo.adicionarAresta(3.0,0.0, 2, 4);
+        grafo.adicionarAresta(1.0,0.0, 4, 3);
+        grafo.adicionarAresta(1.0,0.0, 1, 3);
+        grafo.adicionarAresta(2.0,0.0, 5, 2);
+        grafo.adicionarAresta(3.0,0.0, 5, 1);
 
-        grafo.buscaEmLargura();
+        grafo.buscaEmLargura(0,3);
     }
 }
