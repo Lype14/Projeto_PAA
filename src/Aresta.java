@@ -3,31 +3,33 @@ public class Aresta<TIPO> {
     private double fluxo;
     private Vertice<TIPO> inicio;
     private Vertice<TIPO> fim;
-    private Aresta<TIPO> reversa;
+    String tipo; // direta ou contrária
 
     public Aresta(double capacidade, Vertice<TIPO> inicio, Vertice<TIPO> fim) {
         this.capacidade = capacidade;
         this.fluxo = 0;
         this.inicio = inicio;
         this.fim = fim;
-        this.reversa = null;
     }
 
     public double getCapacidadeResidual() {
         return capacidade - fluxo;
     }
 
+    public double getCapacidade(){
+        return this.capacidade;
+    }
+
     public void adicionarFluxo(double incremento) {
         this.fluxo += incremento;
-        this.reversa.fluxo -= incremento; // Ajusta a reversa
     }
 
-    public void setReversa(Aresta<TIPO> reversa) {
-        this.reversa = reversa;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public Aresta<TIPO> getReversa() {
-        return reversa;
+    public String getTipo() {
+        return this.tipo;
     }
 
     public Vertice<TIPO> getFim() {

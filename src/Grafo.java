@@ -11,8 +11,7 @@ public class Grafo<TIPO> {
 
     }
 
-    public void adicionarVertice(TIPO dado){
-        Vertice<TIPO> novoVertice = new Vertice<TIPO>(dado);
+    public void adicionarVertice(Vertice<TIPO> novoVertice){
         this.vertices.add(novoVertice);
     }
 
@@ -22,19 +21,11 @@ public class Grafo<TIPO> {
 
         if (inicio != null && fim != null) {
             Aresta<TIPO> arestaNormal = new Aresta<TIPO>(capacidade, inicio, fim);
-            Aresta<TIPO> arestaReversa = new Aresta<TIPO>(0.0, fim, inicio); // Aresta reversa começa com capacidade 0
-
-            arestaNormal.setReversa(arestaReversa);
-            arestaReversa.setReversa(arestaNormal);
 
             inicio.adicionarArestaSaida(arestaNormal);
             fim.adicionarArestaEntrada(arestaNormal);
 
-            fim.adicionarArestaSaida(arestaReversa);
-            inicio.adicionarArestaEntrada(arestaReversa);
-
             this.arestas.add(arestaNormal);
-            this.arestas.add(arestaReversa);
         } else {
             System.out.println("Alguns dos vértices não existem no grafo");
         }
@@ -50,6 +41,31 @@ public class Grafo<TIPO> {
             }
         }
         return vertice;
+    }
+
+    public ArrayList<Aresta<TIPO>> getArestas(){
+        return this.arestas;
+    }
+
+    public Aresta<TIPO> getAresta(Vertice<TIPO> inicio, Vertice<TIPO> fim) {
+        for (Aresta<TIPO> aresta : arestas) {
+            if (aresta.getInicio().equals(inicio) && aresta.getFim().equals(fim)) {
+                return aresta;
+            }
+        }
+        return null;
+    }
+    
+    public void setArestas(ArrayList<Aresta<TIPO>> arestas){
+        this.arestas = arestas;
+    }
+
+    public ArrayList<Vertice<TIPO>> getVertices(){
+        return this.vertices;
+    }
+
+    public void setVertices(ArrayList<Vertice<TIPO>> vertices){
+        this.vertices = vertices;
     }
 
     public void buscaEmLargura(TIPO dadoInicio) {
@@ -81,12 +97,12 @@ public class Grafo<TIPO> {
     }
 
 
-    public boolean buscaCaminhoAumentante(TIPO origem, TIPO destino, Map<Vertice<TIPO>, Aresta<TIPO>> caminho) {
+    public boolean buscaCaminhoAumentante(Vertice<TIPO> origem, Vertice<TIPO> destino, Map<Vertice<TIPO>, Aresta<TIPO>> caminho) {
         Queue<Vertice<TIPO>> fila = new LinkedList<>();
         Set<Vertice<TIPO>> visitados = new HashSet<>();
 
-        Vertice<TIPO> origemVertice = getVertice(origem);
-        Vertice<TIPO> destinoVertice = getVertice(destino);
+        Vertice<TIPO> origemVertice = origem;
+        Vertice<TIPO> destinoVertice = destino;
 
         fila.add(origemVertice);
         visitados.add(origemVertice);
